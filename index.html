@@ -375,13 +375,24 @@ over 6 years. The services we provide include:
                             <h3>Request for a car wash</h3>
                             <form  onsubmit="myFunction()">  
                                 <div class="control-group">
-                                    <input id="name" type="text" class="form-control" placeholder="Name" required="required" />
+                                    <input type="text" 
+                                    name="name" id="name"  
+                                    class="form-control" placeholder="Name" required="required" />
                                 </div>
                                 <div class="control-group">
-                                    <input id="email" type="Phone" class="form-control" placeholder="Phone" required="required" />
+                                    <input type="number" 
+                                    name="phone" id="phone"
+                                    class="form-control" placeholder="Phone" required="required" />
                                 </div>
                                 <div class="control-group">
-                                    <textarea id="description" class="form-control" placeholder="Description" required="required"></textarea>
+                                    <input type="email" 
+                                    name="email" id="email"
+                                    class="form-control" placeholder="Email"/>
+                                </div>
+                                <div class="control-group">
+                                    <textarea id="description" 
+                                    name="description" id="description"
+                                    class="form-control" placeholder="Description" required="required"></textarea>
                                 </div>
                                 <div>
                                     <button class="btn btn-custom" type="submit">Send Request</button>
@@ -390,18 +401,21 @@ over 6 years. The services we provide include:
                             <script src="https://smtpjs.com/v3/smtp.js"></script>
                             <script>
                                 function myFunction() {
-                                    const name = document.getElementById("name");
-                                    const email = parentDOM.getElementById("email");
-                                    const description = parentDOM.getElementById("description");
+                                    var name = document.getElementById("name").value;
+                                    var email = document.getElementById("email").value;
+                                    var phone = document.getElementById("phone").value;
+                                    var description = document.getElementById("description").value;
+
                                     alert("Your request has been submitted. You will be contacted soon.");
                                     //    swal("Your request has been submitted. You will be contacted soon.");
                                        Email.send({
-                                            Host : "smtp.mailtrap.io",
-                                            SecureToken : "822B9137C172C1B940180908C0AA9D144566",
-                                            To : email,
+                                            Host : "smtp.elasticemail.com",
+                                            Username : "setesfaalemmesele@gmail.com",
+                                            Password : "7AED152B1879FBC29C81BB136902FC91270F",
+                                            To : 'tikusdelivery@gmail.com',
                                             From : "setesfaalemmesele@gmail.com",
-                                            Subject : "Accepted",
-                                            Body : "<html><h2>Your request has been submitted</h2><strong>our request has been submitted. You will be contacted soon</strong><br></br><em>Thanks</em></html>"
+                                            Subject : "CRYSTAL CARWASH",
+                                            Body : "<html><h2>Dear :"+name+"Your request has been submitted By : "+phone+"</h2><strong>"+description+"</strong><br></br><em>Thanks Crystal CarWash</em></html>"
                                         }).then(
                                         message => alert(message)
                                         );
